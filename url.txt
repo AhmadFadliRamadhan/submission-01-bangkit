@@ -1,1 +1,1 @@
-https://dashboard-submission-01-bangkit-fadli.streamlit.app/
+https://dashboard-submission-01-bangkit-fadli.streamlit.app
