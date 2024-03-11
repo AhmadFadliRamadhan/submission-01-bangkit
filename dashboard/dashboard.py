@@ -1,10 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import streamlit as st
-from babel.numbers import format_currency
-
-sns.set(style="dark")
 
 df_qualityair = pd.read_csv(
     "https://raw.githubusercontent.com/AhmadFadliRamadhan/submission-01-bangkit/main/dashboard/df_qualityair.csv"
@@ -47,9 +43,20 @@ df_b = df_variable[
 
 st.title("Submission 1 | Ahmad Fadli Ramadhan")
 
-st.header("Belajar Analisis Data dengan Python")
+st.header("Air Quality Dataset")
 
-st.write("### Scatter Plot Matrix Parameter Kualitas Udara di Stasiun Dingling")
+st.write("##### Scatter Plot Matrix Parameter Kualitas Udara di Stasiun Dingling")
+
+st.write(
+    """
+         Berdasarkan visualisasi scatter matriks di bawah, diketahui bahwa:
+
+        - `PM2.5` dan `PM10` terlihat dengan jelas membentuk sebuah garis mengarah ke kanan atas, menunjukkan korelasi positif yang kuat.
+        - `CO` dan `NO2` membentuk persebaran mengarah ke kanan atas, persebarannya agak tersebar, menunjukkan korelasi positif yang sedang.
+        - `CO` - `PM2.5`, `NO2` - `PM2.5`, `CO` - `PM10`, dan `NO2` - `PM10` membentuk persebaran mengarah ke kanan atas walau tidak terlalu condong, memiliki persebaran yang luas, menunjukkan korelasi positif yang lemah.
+        - Sisa pasangan yang tidak disebutkan memiliki persebaran yang acak.
+         """
+)
 
 # Membuat scatter matrix
 scatter_data = df_a[["PM2.5", "PM10", "SO2", "NO2", "CO", "O3"]]
@@ -76,7 +83,17 @@ scatter_matrix[0, 0].get_figure().suptitle(
 st.pyplot(scatter_matrix[0, 0].get_figure())
 
 st.write(
-    "### Grafik Rata-Rata Nilai Tiap Kolom per Hari di Stasiun Pemantauan Dingling"
+    "##### Grafik Rata-Rata Nilai Tiap Kolom per Hari di Stasiun Pemantauan Dingling"
+)
+
+st.write(
+    """
+        Berdasarkan visualisasi di bawah, diketahui bahwa:
+
+        - `TEMP`, `PRES`, dan `DEWP` memiliki pola musiman, di mana `TEMP` dan `DEWP` memiliki pola garis yang cenderung mirip.
+        - `PRES` terhadap `TEMP` dan `DEWP` memiliki pola garis yang berlawanan.
+        - `RAIN` memiliki pola garis lurus yang cenderung konstan pada nilai nol.
+        """
 )
 
 daily_mean = df_b.groupby(df_b["date"].dt.date).mean()
