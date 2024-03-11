@@ -6,10 +6,14 @@ from babel.numbers import format_currency
 
 sns.set(style="dark")
 
-df_qualityair = pd.read_csv("df_qualityair.csv")
+df_qualityair = pd.read_csv(
+    "https://raw.githubusercontent.com/AhmadFadliRamadhan/submission-01-bangkit/main/dashboard/df_qualityair.csv"
+)
 df_qualityair["date"] = pd.to_datetime(df_qualityair["date"])
 
-df_variable = pd.read_csv("df_variable.csv")
+df_variable = pd.read_csv(
+    "https://raw.githubusercontent.com/AhmadFadliRamadhan/submission-01-bangkit/main/dashboard/df_variable.csv"
+)
 df_variable["date"] = pd.to_datetime(df_variable["date"])
 
 # Filter data
